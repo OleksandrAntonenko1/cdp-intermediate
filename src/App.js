@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import CourseForm from "./routes/CourseForm";
+import Courses from "./routes/Courses";
+import Login from "./routes/Login";
+import NoMatch from "./routes/NoMatch";
 
-function App() {
+import './App.css';
+import {
+  Switch,
+  Route,
+  BrowserRouter
+} from 'react-router-dom';
+
+export default () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route
+          path={'/'}
+          exact
+          component={Login}
+        />
+        <Route
+          path={`/courses`}
+          exact
+          component={Courses}
+        />
+        <Route
+          path={`/add-course`}
+          exact
+          component={CourseForm}
+        />
+        <Route component={NoMatch} />
+      </Switch>
+    </BrowserRouter>
   );
 }
-
-export default App;
