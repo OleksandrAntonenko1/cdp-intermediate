@@ -1,27 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  Navbar,
-} from 'react-bootstrap';
+import AppBar from '@material-ui/core/AppBar';
+import Icon from '@material-ui/icons/Spa';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  icon: {
+    marginRight: theme.spacing(2),
+  },
+}));
 
 const Header = props => {
+  const classes = useStyles();
+
   return (
-    <Navbar
-      expand="lg"
-      bg="dark"
-      variant="dark"
-    >
-      <Navbar.Brand href="/">
-        <img
-          alt=""
-          src="/logo192.png"
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-        />
-        {' React Bootstrap'}
-      </Navbar.Brand>
-    </Navbar>
+    <AppBar position="relative">
+      <Toolbar>
+        <Icon className={classes.icon} />
+        <Typography variant="h6" color="inherit" noWrap>
+          Album layout
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 };
 
