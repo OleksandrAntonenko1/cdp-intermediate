@@ -1,16 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import SearchForm from "../components/SearchForm";
+import CourseCard from "../components/CourseCard";
 
-const Courses = props => {
+const Courses = () => {
   return (
-    <div>
-      Courses
-    </div>
+    <>
+      <SearchForm />
+      <CourseCard />
+      <CourseCard />
+      <CourseCard />
+      <CourseCard />
+      <CourseCard />
+      <CourseCard />
+    </>
   );
 };
 
-Courses.propTypes = {
-
-};
+Courses.propTypes = {};
 
 export default Courses;

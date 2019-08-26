@@ -1,16 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
-const NoMatch = props => {
-  return (
-    <div>
-        404
-    </div>
-  );
-};
-
-NoMatch.propTypes = {
-
+const NoMatch = () => {
+  return <div>404</div>;
 };
 
 export default NoMatch;
