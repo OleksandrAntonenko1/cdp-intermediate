@@ -30,9 +30,10 @@ export default () => {
           <Header />
           <Container component="main" maxWidth="lg">
             <Switch>
-              <Route path={"/"} exact component={Login} />
+              <Route path={"/login"} exact component={Login} />
               <Route path={`/courses`} exact component={Courses} />
-              <Route path={`/add-course`} exact component={CourseForm} />
+              <Route path={`/courses/new`} exact component={CourseForm} />
+              <Route path={`/courses/:id`} exact component={CourseForm} />
               <Route component={NoMatch} />
             </Switch>
           </Container>

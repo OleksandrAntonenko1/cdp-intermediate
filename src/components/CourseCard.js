@@ -9,6 +9,7 @@ import {
   Card,
   Grid
 } from "@material-ui/core";
+import { Link as routerLink } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -57,10 +58,11 @@ export default function SimpleCard() {
             <Grid container component="div">
               <Grid item xs={12} component="div">
                 <Button
+                  component={routerLink}
                   variant="outlined"
                   className={classes.button}
                   type="button"
-                  href="/add-course"
+                  to="/courses/12"
                 >
                   Edit
                 </Button>
@@ -71,6 +73,9 @@ export default function SimpleCard() {
                   color="secondary"
                   className={classes.button}
                   type="button"
+                  onClick={() => {
+                    console.log("delete");
+                  }}
                 >
                   Delete
                 </Button>

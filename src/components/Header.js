@@ -2,10 +2,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import MenuIcon from "@material-ui/icons/Menu";
+import { Link as routerLink } from "react-router-dom";
 import {
   Breadcrumbs,
   IconButton,
-  Button,
   Typography,
   Toolbar,
   AppBar,
@@ -32,8 +32,9 @@ export default function ButtonAppBar() {
           edge="start"
           className={classes.menuButton}
           color="inherit"
+          component={routerLink}
           aria-label="menu"
-          href="/"
+          to="/courses"
         >
           <MenuIcon />
         </IconButton>
@@ -46,17 +47,22 @@ export default function ButtonAppBar() {
           aria-label="breadcrumb"
           component="div"
         >
-          <Link color="inherit" href="/courses" component="a">
+          <Link color="inherit" to="/courses" component={routerLink}>
             Courses
           </Link>
           <Typography>Breadcrumb</Typography>
         </Breadcrumbs>
-        <Button color="inherit" href="/">
+        <Link
+          className={classes.menuButton}
+          component={routerLink}
+          color="inherit"
+          to="/login"
+        >
           Login
-        </Button>
-        <Button color="inherit" href="/">
+        </Link>
+        <Link component={routerLink} color="inherit" to="/login">
           Logout
-        </Button>
+        </Link>
       </Toolbar>
     </AppBar>
   );
