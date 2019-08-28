@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import MomentUtils from "@date-io/moment";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,10 +31,10 @@ export default () => {
           <Header />
           <Container component="main" maxWidth="lg">
             <Switch>
+              <ProtectedRoute path={`/courses`} exact component={Courses} />
+              <ProtectedRoute path={`/courses/new`} exact component={CourseForm} />
+              <ProtectedRoute path={`/courses/:id`} exact component={CourseForm} />
               <Route path={"/login"} exact component={Login} />
-              <Route path={`/courses`} exact component={Courses} />
-              <Route path={`/courses/new`} exact component={CourseForm} />
-              <Route path={`/courses/:id`} exact component={CourseForm} />
               <Route component={NoMatch} />
             </Switch>
           </Container>
