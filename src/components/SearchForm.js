@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Grid, makeStyles, TextField } from "@material-ui/core";
 import Icon from "@material-ui/icons/Spa";
+import { Link as routerLink } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -43,7 +44,7 @@ const SearchForm = () => {
         </form>
       </Grid>
       <Grid item component="div">
-        <Button variant="contained" className={classes.button} type="submit">
+        <Button variant="contained" className={classes.button} type="submit" component={routerLink} to='/courses/new'>
           <Icon className={classes.icon} />
           Add new course
         </Button>

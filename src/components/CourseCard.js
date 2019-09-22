@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Typography,
@@ -24,34 +25,31 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimpleCard() {
+const CourseCard = ({ title, duration, id, description, createDate }) => {
   const classes = useStyles();
+  const formattedDate = new Date(createDate).toLocaleDateString();
+  const formattedDuration =  `${(parseInt(duration, 10)/ 60).toFixed()} hour ${duration % 60} min`;
 
   return (
     <Card className={classes.card}>
       <Grid container component="div">
-        <Grid item component="div" xs={9} justify="space-between">
+        <Grid item component="div" xs={9}>
           <CardHeader
             title={
               <Grid container component="div">
                 <Grid item xs component="div">
                   <Typography variant="h5" component="h2">
-                    Course 1
+                    {title}
                   </Typography>
                 </Grid>
                 <Grid item component="div">
-                  <Typography color="textSecondary">1h 28m</Typography>
+                  <Typography color="textSecondary">{formattedDuration}</Typography>
                 </Grid>
               </Grid>
             }
-            subheader="26/08/2019"
+            subheader={formattedDate}
           />
-          <CardContent>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor enim
-            eveniet maiores? Aut beatae et excepturi expedita fugit illum, modi
-            nobis provident quas quod reprehenderit rerum sequi temporibus
-            voluptas voluptate?
-          </CardContent>
+          <CardContent>{description}</CardContent>
         </Grid>
         <Grid item component="div" xs>
           <CardActions>
@@ -62,7 +60,7 @@ export default function SimpleCard() {
                   variant="outlined"
                   className={classes.button}
                   type="button"
-                  to="/courses/12"
+                  to={`/courses/${id}`}
                 >
                   Edit
                 </Button>
@@ -86,4 +84,14 @@ export default function SimpleCard() {
       </Grid>
     </Card>
   );
-}
+};
+
+CourseCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  duration: PropTypes.string.isRequired,
+  createDate: PropTypes.string.isRequired
+};
+
+export default CourseCard;
